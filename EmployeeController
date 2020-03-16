@@ -1,0 +1,49 @@
+// Author: Ozan YILDIZ
+@Controller
+@RequestMapping("/emplopee-business")
+public class EmployeeController{
+private boolean isErrorOccuured=false;
+
+@Autowired
+private Validator validator;
+
+@Autowired
+EmployeeEventManager eventManager;
+  
+  @RequestMapping(method=RequestMethod.GET)
+  public String setupEmployeeForm(Model model){
+    Employee emp = new Employee();
+    model.addAttribute("employee",emp);
+
+  return "addNewEmployee";
+  }
+
+  @RequestMapping(method=RequestMethod.POST)
+  public String addNewEmployee(@ModelAttribute("employee") Employee emp,BindingResult result){
+    Set<ConstraintViolation<EmployeeModel>> violations = validator.validate(EmployeeModel);
+     
+    for (ConstraintViolation<EmployeeModel> violation : violations) 
+    {
+        String propertyPath = violation.getPropertyPath().toString();
+        String message = violation.getMessage();
+        // Add JSR-303 errors to BindingResult
+        // This allows Spring to display them in view via a FieldError
+        result.addError(new FieldError("employee",propertyPath,
+ 
+                               "Invalid "+ propertyPath + "(" + message + ")"));
+    }
+ 
+    if (result.hasErrors()) {
+        return "addEmployee";
+    }
+    
+    employeeEventManager.save(emp);
+    return "redirect:success";
+    }
+
+  @RequestMapping(value="/success",method=RequestMethod.GET)
+  public String success(){
+    return "showSuccessForm";
+  }
+
+}
