@@ -33,3 +33,5 @@ auto-config : Includes some basic services. It is shorthand for –
 If not provided, spring will provide an inbuilt login page to user. It also contains attribute for default target if login success, or login failure due to invalid user/password match.
 
 - **logout:** This will help to find the next view if logout is called in application.
+
+- It does not go to database for password validation rather I have stored username/password combination in configuration file itself. To use this king of setup, **authentication-manager** is setup with inline in-built user details service. In more real time applications, this is going to be some user service fetching data from remote database.
