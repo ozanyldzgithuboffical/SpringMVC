@@ -18,3 +18,18 @@ This repository includes basis of Spring MVC
 
 ## Intercept Urls
 - To use expressions to secure individual URLs, you would first need to set the **use-expressions** attribute in the **<http>** element to true. Spring Security will then expect the access attributes of the **intercept-url** elements to contain Spring EL expressions. The expressions should evaluate to a boolean, defining whether access should be allowed or not.
+
+## Security Configuration Terms
+- **http** : Include configuration related url level security. This element is the parent for all web-related namespace functionality.
+auto-config : Includes some basic services. It is shorthand for –
+<http>
+    <form-login />
+    <http-basic />
+    <logout />
+</http>
+- **use-expressions :** It is here to use expressions to secure individual URLs. These expressions can be e.g. hasRole([role]), hasAnyRole([role1,role2]), permitAll, denyAll etc.
+- **intercept-url :** This will match the requested url pattern from request and will decide what action to take based on access value.
+- **form-login:** This will come into picture when user will try to access any secured URL. A login page mapped to “login-page” attribute will be served for authentication check. It is spring security login-processing-url.
+If not provided, spring will provide an inbuilt login page to user. It also contains attribute for default target if login success, or login failure due to invalid user/password match.
+
+- **logout:** This will help to find the next view if logout is called in application.
