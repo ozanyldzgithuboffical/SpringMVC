@@ -8,3 +8,8 @@ This repository includes basis of Spring MVC
 - **spring-security-web:**  It contains filters and related web-security infrastructure code. It also enable URL based security which we are going to use in this demo.
 - **spring-security-config:** It contains the security namespace parsing code. You need it if you are using the Spring Security XML file for configuration.
 - **spring security-taglibs :** It provides basic support for accessing security information and applying security constraints in JSPs.
+
+## Configure DelegatingFilterProxy in web.xml
+- Spring Security’s web infrastructure is based entirely on standard servlet filters. These filters are defined in web.xml file or they will be ignored by the servlet container.
+
+- In Spring Security, the filter classes are also Spring beans defined in the application context and thus able to take advantage of Spring’s rich dependency-injection facilities and lifecycle interfaces. Spring’s **DelegatingFilterProxy** provides the link between **web.xml** and the **application context**.
