@@ -1,0 +1,5 @@
+//All errors throwing from contollers lead to raise /erros uri view page
+// This is valid after Servlet 3.0
+<error-page>
+    <location>/errors</location>
+</error-page>
