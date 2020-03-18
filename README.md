@@ -1,4 +1,4 @@
-# SpringMVC
+# Spring MVC
 This repository includes basis of Spring MVC
 
 - JDBC user service implementation provide these two attributes to match username with password and then username with granted role or authority.
