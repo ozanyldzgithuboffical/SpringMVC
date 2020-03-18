@@ -6,6 +6,9 @@
 
 - **<global-method-security pre-post-annotations="enabled" />** lets you use **@PreAuthorize** and **@PostAuthorize** annotations on controller methods to provide the security.
 
+- The **@PreAuthorize** can check for authorization before entering into method. The @PreAuthorize authorizes on the basis of role or the argument which is passed to the method.
+The **@PostAuthorize** checks for authrorisation after method execution. The @PostAuthorize authorizes on the basis of logged in roles, return object by method and passed argument to the method. For the returned object spring security provides built-in keyword i.e. returnObject.
+
 - **<global-method-security secured-annotations="enabled" />** lets you use **@Secured** annotation 
 
 - These annotations take one string parameter which is either is role-name or expression, and which one to use depends on your configuration for <http> element’s use-expression value.
