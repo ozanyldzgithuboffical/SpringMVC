@@ -8,6 +8,8 @@
 
 - The **@PreAuthorize** can check for authorization before entering into method. The @PreAuthorize authorizes on the basis of role or the argument which is passed to the method.
 The **@PostAuthorize** checks for authrorisation after method execution. The @PostAuthorize authorizes on the basis of logged in roles, return object by method and passed argument to the method. For the returned object spring security provides built-in keyword i.e. returnObject.
+- **@Secured** annotation can allow method access for one or more roles
+- The **SuppressWarning** annotation is used to suppress compiler warnings for the annotated element. Specifically, the unchecked category allows suppression of compiler warnings generated as a result of unchecked type casts.
 
 - **<global-method-security secured-annotations="enabled" />** lets you use **@Secured** annotation 
 
