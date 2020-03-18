@@ -1,0 +1,18 @@
+<authentication-manager alias="authenticationManager">
+    <authentication-provider>
+        <jdbc-user-service data-source-ref="dataSource"
+ 
+       users-by-username-query="
+         SELECT userName, pwd, CASE ENABLED WHEN 1 THEN 'true' ELSE 'false' END 'ENABLED' 
+         FROM Usersw 
+         WHERE userName=?;"
+ 
+       authorities-by-username-query="
+        SELECT user.userName, role.roleName 
+        FROM Users user, Roles role
+        WHERE user.userId = role.roleId
+        AND user.userName=?;"
+ 
+        />
+    </authentication-provider>
+</authentication-manager>
