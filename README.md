@@ -35,3 +35,9 @@ If not provided, spring will provide an inbuilt login page to user. It also cont
 - **logout:** This will help to find the next view if logout is called in application.
 
 - It does not go to database for password validation rather I have stored username/password combination in configuration file itself. To use this king of setup, **authentication-manager** is setup with inline in-built user details service. In more real time applications, this is going to be some user service fetching data from remote database.
+
+## UsernamePasswordAuthenticationFilter
+
+- By default, spring auto generates and configures a UsernamePasswordAuthenticationFilter bean. This filter, by default, responds to the URL **/j_spring_security_check** when processing a login POST from your web-form. For username field it uses **‘j_username‘** and for password field it uses ‘j_password‘.
+
+- On submitting this form, UsernamePasswordAuthenticationFilter will match the username and password as configured in authentication-provider settings in **application-security.xml**.
